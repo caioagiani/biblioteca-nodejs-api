@@ -1,0 +1,27 @@
+{
+  "name": "nodejs",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "dev": "nodemon src/server.js",
+    "dev:db": "./src/scripts/database.sh"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "mongoose": "5.10.15"
+  },
+  "devDependencies": {
+    "dotenv": "^8.2.0",
+    "eslint": "7.21.0",
+    "eslint-config-airbnb-base": "14.2.1",
+    "eslint-config-prettier": "8.1.0",
+    "eslint-plugin-import": "2.22.1",
+    "eslint-plugin-import-helpers": "1.1.0",
+    "eslint-plugin-prettier": "3.3.1",
+    "nodemon": "^2.0.7",
+    "prettier": "2.2.1",
+    "sucrase": "^3.17.1"
+  }
+}
