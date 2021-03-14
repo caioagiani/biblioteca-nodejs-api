@@ -1,7 +1,9 @@
-import { connect } from 'mongoose';
+import { connect, connection } from 'mongoose';
+
+const { DB_USER, DB_PASS, DB_NAME, DB_HOST } = process.env;
 
 connect(
-  `mongodb://${process.env.DB_NAME}:${process.env.DB_PASS}@${process.env.DB_HOST}:27017/admin`,
+  `mongodb://${DB_USER}:${DB_PASS}@${DB_HOST}:27017/${DB_NAME}?authSource=admin`,
   {
     useNewUrlParser: true,
     useUnifiedTopology: true,
@@ -9,5 +11,8 @@ connect(
     useFindAndModify: false,
   }
 );
+
+connection.on('error', () => console.error('ERROR CONNECTION'));
+connection.once('open', () => console.error('SUCCESS CONNECTION'));
 
 export default connect;
