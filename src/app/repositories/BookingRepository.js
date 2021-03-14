@@ -21,43 +21,32 @@ export default {
     const findAllBookings = await Booking.find(options.query)
       .skip(Number(options.skip))
       .limit(Number(options.limit))
-      .sort({ createdAt: -1 });
+      .sort({ createdAt: -1 })
+      .populate(['book', 'user']);
 
     return findAllBookings;
   },
-  async count(query) {
-    const filterQuery = query || {};
+  async count({ query }) {
+    const findQuery = query || {};
 
-    const count = await Booking.find(filterQuery).countDocuments();
+    console.log(findQuery);
+
+    const count = await Booking.find(findQuery).countDocuments();
 
     return count;
   },
-  async update(id, data) {
-    try {
-      const updateBook = await Book.findByIdAndUpdate(id, data, {
-        new: true,
-      });
+  async update(data) {
+    const { id, body } = data;
 
-      if (!updateBook) {
-        return res.status(400).json({ error: 'Não encontrado nenhum ID.' });
-      }
+    const updateBooking = await Booking.findByIdAndUpdate(id, body, {
+      new: true,
+    });
 
-      return updateBook;
-    } catch (error) {
-      return { error: error.message };
-    }
+    return updateBooking;
   },
   async delete(id) {
-    try {
-      const deleteBook = await Book.findByIdAndDelete(id);
+    const deleteBooking = await Booking.findByIdAndDelete(id);
 
-      if (!deleteBook) {
-        return res.status(400).json({ error: 'Não encontrado nenhum ID.' });
-      }
-
-      return deleteBook;
-    } catch (error) {
-      return { error: error.message };
-    }
+    return deleteBooking;
   },
 };

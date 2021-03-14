@@ -25,10 +25,10 @@ export default {
 
     return findAllUsers;
   },
-  async count(query) {
-    const filterQuery = query || {};
+  async count({ query }) {
+    const findQuery = query || {};
 
-    const count = await User.find(filterQuery).countDocuments();
+    const count = await User.find(findQuery).countDocuments();
 
     return count;
   },
