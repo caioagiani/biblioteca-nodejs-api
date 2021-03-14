@@ -19,11 +19,11 @@ module.exports = {
     indent: ['error', 2],
     'no-undef': 0,
     'no-console': 0,
-    'no-underscore-dangle': 0,
+    'no-unused-vars': 0,
     'consistent-return': 0,
+    'no-underscore-dangle': 0,
     'import/prefer-default-export': 0,
     'linebreak-style': ['error', 'unix'],
-    'no-unused-vars': ['error', { argsIgnorePattern: 'next' }],
     'import/no-extraneous-dependencies': ['error', { devDependencies: true }],
     'import-helpers/order-imports': [
       'warn',

@@ -1,5 +1,6 @@
 import BookingRepository from '../repositories/BookingRepository';
 import BookRepository from '../repositories/BookRepository';
+import UserRepository from '../repositories/UserRepository';
 import { parse, parseMany } from '../views/BookingView';
 
 export default {
@@ -46,6 +47,22 @@ export default {
     return res.json({ total, bookings: parseMany(bookings) });
   },
   async store(req, res) {
+    const { book, user } = req.body;
+
+    const [bookExists, _] = await BookRepository.find({
+      query: { _id: book },
+    });
+
+    const [userExists, __] = await UserRepository.find({
+      query: { _id: user },
+    });
+
+    if (!bookExists || !userExists) {
+      return res
+        .status(400)
+        .json({ error: 'Usuário ou Livro não encontrado.' });
+    }
+
     try {
       const booking = await BookingRepository.create(req.body);
 
