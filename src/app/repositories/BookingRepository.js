@@ -29,8 +29,6 @@ export default {
   async count({ query }) {
     const findQuery = query || {};
 
-    console.log(findQuery);
-
     const count = await Booking.find(findQuery).countDocuments();
 
     return count;
