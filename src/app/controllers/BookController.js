@@ -39,7 +39,7 @@ export default {
 
     const findBookExists = await BookRepository.find(options);
 
-    if (findBookExists.length >= 1) {
+    if (findBookExists && findBookExists.length >= 1) {
       return res
         .status(400)
         .json({ error: 'Este livro já está cadastrado no sistema.' });

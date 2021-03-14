@@ -18,7 +18,7 @@ router
   .delete('/books/:id', BookController.delete)
 
   .get('/bookings', BookingController.index)
-  .get('/bookings/:name', BookingController.show)
+  .get('/bookings/search', BookingController.show)
   .post('/bookings', BookingController.store)
   .patch('/bookings/:id', BookingController.update)
   .delete('/bookings/:id', BookingController.delete);

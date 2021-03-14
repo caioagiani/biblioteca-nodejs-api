@@ -25,10 +25,10 @@ export default {
 
     return findAllBooks;
   },
-  async count(query) {
-    const filterQuery = query || {};
+  async count({ query }) {
+    const findQuery = query || {};
 
-    const count = await Book.find(filterQuery).countDocuments();
+    const count = await Book.find(findQuery).countDocuments();
 
     return count;
   },
