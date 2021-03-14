@@ -1,4 +1,5 @@
 import BookRepository from '../repositories/BookRepository';
+import { parse, parseMany } from '../views/BookView';
 
 export default {
   async index(req, res) {
@@ -9,7 +10,7 @@ export default {
     const total = await BookRepository.count(options);
     const books = await BookRepository.find(options);
 
-    return res.json({ total, books });
+    return res.json({ total, books: parseMany(books) });
   },
   async show(req, res) {
     const { title } = req.params;
@@ -26,7 +27,7 @@ export default {
     const total = await BookRepository.count(options);
     const books = await BookRepository.find(options);
 
-    return res.json({ total, books });
+    return res.json({ total, books: parseMany(books) });
   },
   async store(req, res) {
     const { title } = req.body;
@@ -48,7 +49,7 @@ export default {
     try {
       const book = await BookRepository.create(req.body);
 
-      return res.status(201).json(book);
+      return res.status(201).json(parse(book));
     } catch (error) {
       return res.status(500).json({ error: error.message });
     }
@@ -68,7 +69,7 @@ export default {
         return res.status(400).json({ error: 'Não encontrado nenhum ID.' });
       }
 
-      return res.json(updateBook);
+      return res.json(parse(updateBook));
     } catch (error) {
       return res.status(500).json({ error: error.message });
     }
@@ -79,7 +80,7 @@ export default {
     try {
       const deleteBook = await BookRepository.delete(id);
 
-      return res.json(deleteBook);
+      return res.json(parse(deleteBook));
     } catch (error) {
       return res.status(500).json({ error: error.message });
     }

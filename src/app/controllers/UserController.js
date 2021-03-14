@@ -1,4 +1,5 @@
 import UserRepository from '../repositories/UserRepository';
+import { parse, parseMany } from '../views/UserView';
 
 export default {
   async index(req, res) {
@@ -9,7 +10,7 @@ export default {
     const total = await UserRepository.count(options);
     const users = await UserRepository.find(options);
 
-    return res.json({ total, users });
+    return res.json({ total, users: parseMany(users) });
   },
   async show(req, res) {
     const { email } = req.params;
@@ -26,7 +27,7 @@ export default {
     const total = await UserRepository.count(options);
     const users = await UserRepository.find(options);
 
-    return res.json({ total, users });
+    return res.json({ total, users: parseMany(users) });
   },
   async store(req, res) {
     const { email } = req.body;
@@ -48,7 +49,7 @@ export default {
     try {
       const user = await UserRepository.create(req.body);
 
-      return res.status(201).json(user);
+      return res.status(201).json(parse(user));
     } catch (error) {
       return res.status(500).json({ error: error.message });
     }

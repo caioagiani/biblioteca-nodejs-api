@@ -1,5 +1,6 @@
 import BookingRepository from '../repositories/BookingRepository';
 import BookRepository from '../repositories/BookRepository';
+import { parse, parseMany } from '../views/BookingView';
 
 export default {
   async index(req, res) {
@@ -10,7 +11,7 @@ export default {
     const total = await BookingRepository.count(options);
     const bookings = await BookingRepository.find(options);
 
-    return res.json({ total, bookings });
+    return res.json({ total, bookings: parseMany(bookings) });
   },
   async show(req, res) {
     const { value, skip, limit } = req.query;
@@ -42,13 +43,13 @@ export default {
     const total = await BookingRepository.count(options);
     const bookings = await BookingRepository.find(options);
 
-    return res.json({ total, bookings });
+    return res.json({ total, bookings: parseMany(bookings) });
   },
   async store(req, res) {
     try {
-      const bokking = await BookingRepository.create(req.body);
+      const booking = await BookingRepository.create(req.body);
 
-      return res.status(201).json(bokking);
+      return res.status(201).json(parse(booking));
     } catch (error) {
       return res.status(500).json({ error: error.message });
     }
@@ -68,7 +69,7 @@ export default {
         return res.status(400).json({ error: 'Não encontrado nenhum ID.' });
       }
 
-      return res.json(updateBookings);
+      return res.json(parse(updateBookings));
     } catch (error) {
       return res.status(500).json({ error: error.message });
     }
@@ -78,6 +79,6 @@ export default {
 
     const deleteBooking = await BookingRepository.delete(id);
 
-    return res.json(deleteBooking);
+    return res.json(parse(deleteBooking));
   },
 };
