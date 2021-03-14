@@ -1,13 +1,18 @@
-import { connect } from 'mongoose';
+import { connect, connection } from 'mongoose';
 
-connect(
-  `mongodb://${process.env.DB_NAME}:${process.env.DB_PASS}@${process.env.DB_HOST}:27017/admin`,
-  {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-    useCreateIndex: true,
-    useFindAndModify: false,
-  }
-);
+const { DB_USER, DB_PASS, DB_NAME, DB_HOST } = process.env;
+
+connect(`mongodb://${DB_HOST}:27017`, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  useCreateIndex: true,
+  useFindAndModify: false,
+  user: DB_USER,
+  pass: DB_PASS,
+  dbName: DB_NAME,
+});
+
+connection.on('error', () => console.error('DATABASE: ERROR'));
+connection.once('open', () => console.error('DATABASE: SUCCESS'));
 
 export default connect;
