@@ -1,3 +1,4 @@
+import crypto from 'crypto';
 import { Schema, model } from 'mongoose';
 
 const UserSchema = new Schema({
@@ -20,6 +21,7 @@ const UserSchema = new Schema({
     type: String,
     required: true,
     select: false,
+    set: (value) => crypto.createHash('md5').update(value).digest('hex'),
   },
 });
 
