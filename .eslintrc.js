@@ -16,7 +16,7 @@ module.exports = {
     sourceType: 'module',
   },
   rules: {
-    indent: ['error', 2],
+    indent: 0,
     camelcase: 0,
     'no-undef': 0,
     'no-console': 0,

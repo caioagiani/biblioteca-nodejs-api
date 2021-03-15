@@ -1,6 +1,6 @@
-import { connect, connection } from 'mongoose';
+import { connect } from 'mongoose';
 
-const { DB_USER, DB_PASS, DB_NAME, DB_HOST } = process.env;
+const { DB_USER, DB_PASS, DB_NAME, DB_HOST, NODE_ENV } = process.env;
 
 connect(`mongodb://${DB_HOST}:27017`, {
   useNewUrlParser: true,
@@ -9,10 +9,7 @@ connect(`mongodb://${DB_HOST}:27017`, {
   useFindAndModify: false,
   user: DB_USER,
   pass: DB_PASS,
-  dbName: DB_NAME,
+  dbName: NODE_ENV === 'test' ? `${NODE_ENV}_test` : DB_NAME,
 });
-
-connection.on('error', () => console.error('DATABASE: ERROR'));
-connection.once('open', () => console.error('DATABASE: SUCCESS'));
 
 export default connect;
