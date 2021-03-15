@@ -4,6 +4,8 @@ paths:
       tags:
         - Book
       summary: Listar livros
+      security:
+        - ApiKeyAuth: []
       parameters:
         - $ref: '#/components/parameters/skipQuery'
         - $ref: '#/components/parameters/limitQuery'

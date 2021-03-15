@@ -4,6 +4,8 @@ paths:
       tags:
         - User
       summary: Pesquisa por usuários
+      security:
+        - ApiKeyAuth: []
       parameters:
         - $ref: '#/components/parameters/emailParam'
         - $ref: '#/components/parameters/skipQuery'

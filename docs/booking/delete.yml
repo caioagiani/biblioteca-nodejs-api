@@ -4,6 +4,8 @@ paths:
       tags:
         - Booking
       summary: Deletar reserva
+      security:
+        - ApiKeyAuth: []
       parameters:
         - $ref: '#/components/parameters/idParam'
       responses:

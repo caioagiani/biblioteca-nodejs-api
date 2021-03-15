@@ -4,6 +4,8 @@ paths:
       tags:
         - Book
       summary: Pesquisa por usuários
+      security:
+        - ApiKeyAuth: []
       parameters:
         - $ref: '#/components/parameters/titleParam'
         - $ref: '#/components/parameters/skipQuery'

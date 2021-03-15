@@ -1,9 +1,9 @@
 paths:
-  /books/{id}:
+  /users/{id}:
     patch:
       tags:
-        - Book
-      summary: Atualizar livro
+        - User
+      summary: Atualizar usuário
       security:
         - ApiKeyAuth: []
       parameters:
@@ -13,7 +13,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/update_books'
+              $ref: '#/components/schemas/update_users'
       responses:
         201:
           description: Processado com sucesso.
@@ -31,14 +31,18 @@ components:
         type: string
         format: ObjectId
       required: true
-      description: Insira o ObjectID do livro que deseja atualizar.
+      description: Insira o ObjectID do usuário que deseja atualizar.
   schemas:
-    update_books:
+    update_users:
       type: object
       properties:
-        title:
+        name:
           type: string
-        author:
+        email:
           type: string
-        category:
+        password:
           type: string
+      required:
+        - name
+        - email
+        - password
