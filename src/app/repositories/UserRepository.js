@@ -32,4 +32,13 @@ export default {
 
     return count;
   },
+  async update(data) {
+    const { id, body } = data;
+
+    const updateUser = await User.findByIdAndUpdate(id, body, {
+      new: true,
+    });
+
+    return updateUser;
+  },
 };

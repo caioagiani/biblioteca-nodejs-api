@@ -4,6 +4,8 @@ paths:
       tags:
         - Booking
       summary: Pesquisa por reservas
+      security:
+        - ApiKeyAuth: []
       parameters:
         - $ref: '#/components/parameters/searchParam'
         - $ref: '#/components/parameters/skipQuery'

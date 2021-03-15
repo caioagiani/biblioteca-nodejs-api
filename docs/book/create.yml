@@ -4,6 +4,8 @@ paths:
       tags:
         - Book
       summary: Criar livro
+      security:
+        - ApiKeyAuth: []
       requestBody:
         required: true
         content:

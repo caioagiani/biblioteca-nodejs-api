@@ -4,6 +4,8 @@ paths:
       tags:
         - Booking
       summary: Criar uma reserva
+      security:
+        - ApiKeyAuth: []
       requestBody:
         required: true
         content:

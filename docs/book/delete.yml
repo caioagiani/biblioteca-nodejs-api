@@ -4,6 +4,8 @@ paths:
       tags:
         - Book
       summary: Deletar livro
+      security:
+        - ApiKeyAuth: []
       parameters:
         - $ref: '#/components/parameters/idParam'
       responses:

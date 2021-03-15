@@ -54,4 +54,24 @@ export default {
       return res.status(500).json({ error: error.message });
     }
   },
+  async update(req, res) {
+    const { id } = req.params;
+
+    const options = {
+      id,
+      body: req.body,
+    };
+
+    try {
+      const updateUser = await UserRepository.update(options);
+
+      if (!updateUser) {
+        return res.status(400).json({ error: 'Não encontrado nenhum ID.' });
+      }
+
+      return res.json(parse(updateUser));
+    } catch (error) {
+      return res.status(500).json({ error: error.message });
+    }
+  },
 };
