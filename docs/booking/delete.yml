@@ -2,7 +2,7 @@ paths:
   /bookings/{id}:
     delete:
       tags:
-        - Book
+        - Booking
       summary: Deletar reserva
       parameters:
         - $ref: '#/components/parameters/idParam'
