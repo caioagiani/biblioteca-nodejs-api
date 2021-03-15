@@ -14,6 +14,12 @@
   <p>Sistema de reservas para bibliotecas otimizarem o tempo entre Usuário & Livro.</p><br />
 </div>
 
+<div align="center" style="margin-bottom: 20px;">
+
+  **POST** `http://localhost:3333/docs`
+
+  <img align="center" alt="Start app" title="preview" src=".github/assets/docs.gif" width="75%"><br />
+</div>
 
 ## Baixar projeto e instalar dependências:
 
@@ -44,15 +50,11 @@ $ docker-compose up
   <img align="center" alt="Start app" title="preview" src=".github/assets/run-app.gif" width="85%">
 </div>
 
-
 ## Testes
 
 ```bash
 $ docker-compose run --rm api npm test
-```
 
-```javascript
-docker-compose run --rm api npm test
 Starting db ... done
 
 > nodejs@1.0.0 test /usr/src/app
