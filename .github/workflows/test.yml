@@ -1,0 +1,24 @@
+name: Test
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  build:
+    name: test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: install node v12
+        uses: actions/setup-node@v2
+        with:
+          node-version: 12
+      - name: jest
+        env:
+          NODE_ENV: test
+          DB_HOST: db
+          DB_NAME: biblioteca
+          DB_USER: username
+          DB_PASS: password
+        run: docker-compose run --rm api npm test
