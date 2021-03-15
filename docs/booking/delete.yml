@@ -1,0 +1,26 @@
+paths:
+  /bookings/{id}:
+    delete:
+      tags:
+        - Book
+      summary: Deletar reserva
+      parameters:
+        - $ref: '#/components/parameters/idParam'
+      responses:
+        201:
+          description: Processado com sucesso.
+        400:
+          description: Erro de requisição, verifique os parâmetros tente novamente.
+        500:
+          description: Erro interno do servidor.
+
+components:
+  parameters:
+    idParam:
+      in: path
+      name: id
+      schema:
+        type: string
+        format: ObjectId
+      required: true
+      description: Insira o ObjectID da reserva que deseja deletar.

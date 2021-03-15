@@ -10,7 +10,10 @@
   "dependencies": {
     "cors": "^2.8.5",
     "express": "^4.17.1",
-    "mongoose": "5.12.0"
+    "express-group-routes": "^1.1.0",
+    "mongoose": "5.12.0",
+    "swagger-jsdoc": "6.0.0",
+    "swagger-ui-express": "^4.1.6"
   },
   "devDependencies": {
     "dotenv": "8.2.0",

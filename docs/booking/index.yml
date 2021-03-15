@@ -1,0 +1,32 @@
+paths:
+  /bookings:
+    get:
+      tags:
+        - Booking
+      summary: Listar reservas
+      parameters:
+        - $ref: '#/components/parameters/skipQuery'
+        - $ref: '#/components/parameters/limitQuery'
+      responses:
+        200:
+          description: Retorna o objeto com o total count de bookings e um array com as reservas cadastrados.
+
+components:
+  parameters:
+    skipQuery:
+      in: query
+      name: skip
+      required: false
+      schema:
+        type: integer
+        default: 0
+      description: Número da página atual, quando total de itens for maior que o limite, basta ir para a próxima página 0 -> 1.
+    limitQuery:
+      in: query
+      name: limit
+      required: false
+      schema:
+        type: integer
+        minimum: 1
+        default: 10
+      description: Limite de itens por paginação.
