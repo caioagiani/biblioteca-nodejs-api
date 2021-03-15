@@ -42,7 +42,7 @@ export default {
 
     if (findUserExists.length >= 1) {
       return res
-        .status(500)
+        .status(400)
         .json({ error: 'Este e-mail já está cadastrado no sistema' });
     }
 

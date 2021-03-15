@@ -15,18 +15,15 @@ export default {
     return res.json({ total, bookings: parseMany(bookings) });
   },
   async show(req, res) {
-    const { value, skip, limit } = req.query;
-
-    if (!value) {
-      return res.status(400).json({ error: 'Nenhuma reserva foi encontrada.' });
-    }
+    const { search } = req.params;
+    const { skip, limit } = req.query;
 
     const findBook = await BookRepository.find({
       query: {
         $or: [
-          { title: { $regex: value, $options: 'i' } },
-          { author: { $regex: value, $options: 'i' } },
-          { category: { $regex: value, $options: 'i' } },
+          { title: { $regex: search, $options: 'i' } },
+          { author: { $regex: search, $options: 'i' } },
+          { category: { $regex: search, $options: 'i' } },
         ],
       },
     });
