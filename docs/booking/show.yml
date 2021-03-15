@@ -1,0 +1,40 @@
+paths:
+  /bookings/{search}:
+    get:
+      tags:
+        - Booking
+      summary: Pesquisa por reservas
+      parameters:
+        - $ref: '#/components/parameters/searchParam'
+        - $ref: '#/components/parameters/skipQuery'
+        - $ref: '#/components/parameters/limitQuery'
+      responses:
+        200:
+          description: Retorna o objeto com o total count de users e um array com os usuários cadastrados com base na pesquisa.
+
+components:
+  parameters:
+    searchParam:
+      in: path
+      name: search
+      schema:
+        type: string
+      required: true
+      description: Insira o valor de pesquisa para localizar uma reserva.
+    skipQuery:
+      in: query
+      name: skip
+      required: false
+      schema:
+        type: integer
+        default: 0
+      description: Número da página atual, quando total de itens for maior que o limite, basta ir para a próxima página 0 -> 1.
+    limitQuery:
+      in: query
+      name: limit
+      required: false
+      schema:
+        type: integer
+        minimum: 1
+        default: 10
+      description: Limite de itens por paginação.

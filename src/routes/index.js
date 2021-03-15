@@ -1,26 +1,19 @@
 import express from 'express';
 
-import BookController from '../app/controllers/BookController';
-import BookingController from '../app/controllers/BookingController';
-import UserController from '../app/controllers/UserController';
+import 'express-group-routes';
+
+import bookings from './bookings';
+import books from './books';
+import docs from './docs';
+import users from './users';
 
 const router = express.Router();
 
-router
-  .get('/users', UserController.index)
-  .get('/users/:email', UserController.show)
-  .post('/users', UserController.store)
-
-  .get('/books', BookController.index)
-  .get('/books/:title', BookController.show)
-  .post('/books', BookController.store)
-  .patch('/books/:id', BookController.update)
-  .delete('/books/:id', BookController.delete)
-
-  .get('/bookings', BookingController.index)
-  .get('/bookings/search', BookingController.show)
-  .post('/bookings', BookingController.store)
-  .patch('/bookings/:id', BookingController.update)
-  .delete('/bookings/:id', BookingController.delete);
+router.group('/api/v1', (routes) => {
+  router.group('/docs', docs);
+  routes.group('/users', users);
+  routes.group('/books', books);
+  routes.group('/bookings', bookings);
+});
 
 export { router };

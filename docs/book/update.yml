@@ -1,0 +1,42 @@
+paths:
+  /books/{id}:
+    patch:
+      tags:
+        - Book
+      summary: Atualizar livro
+      parameters:
+        - $ref: '#/components/parameters/idParam'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/update_books'
+      responses:
+        201:
+          description: Processado com sucesso.
+        400:
+          description: Erro de requisição, verifique os parâmetros tente novamente.
+        500:
+          description: Erro interno do servidor.
+
+components:
+  parameters:
+    idParam:
+      in: path
+      name: id
+      schema:
+        type: string
+        format: ObjectId
+      required: true
+      description: Insira o ObjectID do livro que deseja atualizar.
+  schemas:
+    update_books:
+      type: object
+      properties:
+        title:
+          type: string
+        author:
+          type: string
+        category:
+          type: string
