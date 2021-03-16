@@ -16,7 +16,7 @@
 
 <div align="center" style="margin-bottom: 20px;">
 
-  **POST** `http://localhost:3333/docs`
+  **GET** `http://localhost:3333/docs`
 
   <img align="center" alt="Docs app" title="Docs app" src=".github/assets/docs.gif" width="85%"><br />
 
