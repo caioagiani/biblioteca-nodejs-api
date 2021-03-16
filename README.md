@@ -1,5 +1,5 @@
 <p align="center">
-  <img width="20%" src=".github/assets/logo.png" alt="API" title="nextlevelweek"></a>
+  <img width="20%" src=".github/assets/logo.png" alt="API NodeJS" title="API NodeJS"></a>
 </p>
 
 <h2 align="center">API Biblioteca | Nodejs</h2>
@@ -18,7 +18,9 @@
 
   **POST** `http://localhost:3333/docs`
 
-  <img align="center" alt="Start app" title="preview" src=".github/assets/docs.gif" width="75%"><br />
+  <img align="center" alt="Docs app" title="Docs app" src=".github/assets/docs.gif" width="9%"><br />
+
+  Importe todas as rotas no seu [Insomnia](https://insomnia.rest/run/?label=biblioteca-nodejs-api&uri=https://raw.githubusercontent.com/caioagiani/biblioteca-nodejs-api/master/insomnia.json).
 </div>
 
 ## Baixar projeto e instalar dependências:
@@ -47,7 +49,7 @@ $ docker-compose up
 ```
 
 <div align="center" style="margin-bottom: 10px;">
-  <img align="center" alt="Start app" title="preview" src=".github/assets/run-app.gif" width="85%">
+  <img align="center" alt="Start app" title="Start app" src=".github/assets/run-app.gif" width="85%">
 </div>
 
 ## Testes
