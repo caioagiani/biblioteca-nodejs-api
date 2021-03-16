@@ -18,7 +18,7 @@
 
   **POST** `http://localhost:3333/docs`
 
-  <img align="center" alt="Docs app" title="Docs app" src=".github/assets/docs.gif" width="9%"><br />
+  <img align="center" alt="Docs app" title="Docs app" src=".github/assets/docs.gif" width="85%"><br />
 
   Importe todas as rotas no seu [Insomnia](https://insomnia.rest/run/?label=biblioteca-nodejs-api&uri=https://raw.githubusercontent.com/caioagiani/biblioteca-nodejs-api/master/insomnia.json).
 </div>
