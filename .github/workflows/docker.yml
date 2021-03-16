@@ -1,0 +1,30 @@
+name: Run tests
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: White .env
+        run: echo "DB_HOST=localhost\nDB_NAME=biblioteca\nDB_USER=username\nDB_PASS=!password!" >> .env
+
+      - name: npm install
+        run: npm install
+
+      - name: Build the stack
+        run: docker-compose up -d
+
+      - name: Test
+        env:
+          DB_HOST: ${{ secrets.DB_HOST }}
+          DB_NAME: ${{ secrets.DB_NAME }}
+          DB_USER: ${{ secrets.DB_USER }}
+          DB_PASS: ${{ secrets.DB_PASS }}
+
+        run: docker-compose run --rm api npm test

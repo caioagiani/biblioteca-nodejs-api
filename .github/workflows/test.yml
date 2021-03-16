@@ -1,0 +1,57 @@
+# name: Run tests
+
+# on:
+#   push:
+#   pull_request:
+
+# jobs:
+#   lint:
+#     runs-on: ubuntu-latest
+#     steps:
+#     - uses: actions/checkout@v2
+#     - name: install node v12
+#       uses: actions/setup-node@v2
+#       with:
+#         node-version: 12
+#     - name: npm install
+#       run: npm install
+#     - name: eslint
+#       uses: icrawl/action-eslint@v1
+#       env:
+#         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+#       with:
+#         job-name: eslint
+
+#   test:
+#     runs-on: ubuntu-latest
+#     strategy:
+#       matrix:
+#         node-version: [12.x]
+#         mongodb-version: [4.2]
+#     steps:
+#       - uses: actions/checkout@v1
+
+#       - name: Set-up Node.js ${{ matrix.node-version }}
+#         uses: actions/setup-node@v1
+#         with:
+#           node-version: ${{ matrix.node-version }}
+
+#       - name: Set-up MongoDB ${{ matrix.mongodb-version }}
+#         uses: supercharge/mongodb-github-action@1.3.0
+#         with:
+#           mongodb-version: ${{ matrix.mongodb-version }}
+#         env:
+#           MONGO_INITDB_ROOT_USERNAME: ${{ secrets.DB_USER }}
+#           MONGO_INITDB_ROOT_PASSWORD: ${{ secrets.DB_PASS }}
+#       - run: npm install
+
+#       - name: Run server & test
+#         env:
+#           DB_HOST: ${{ secrets.DB_HOST }}
+#           DB_NAME: ${{ secrets.DB_NAME }}
+#           DB_USER: ${{ secrets.DB_USER }}
+#           DB_PASS: ${{ secrets.DB_PASS }}
+#         run: |
+#             yarn dev &
+#             sleep 5
+#             yarn test
