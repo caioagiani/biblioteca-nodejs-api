@@ -28,7 +28,7 @@
     "jest": "27.0.4",
     "nodemon": "2.0.15",
     "prettier": "2.2.1",
-    "sucrase": "3.18.1",
+    "sucrase": "3.27.0",
     "supertest": "6.2.2"
   }
 }
