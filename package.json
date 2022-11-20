@@ -26,7 +26,7 @@
     "eslint-plugin-import-helpers": "1.1.0",
     "eslint-plugin-prettier": "3.4.1",
     "jest": "27.0.4",
-    "nodemon": "2.0.15",
+    "nodemon": "2.0.20",
     "prettier": "2.2.1",
     "sucrase": "3.18.1",
     "supertest": "6.2.2"
