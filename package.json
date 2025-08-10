@@ -17,7 +17,7 @@
     "swagger-ui-express": "^4.1.6"
   },
   "devDependencies": {
-    "@sucrase/jest-plugin": "2.2.0",
+    "@sucrase/jest-plugin": "2.2.1",
     "dotenv": "16.0.3",
     "eslint": "7.25.0",
     "eslint-config-airbnb-base": "14.2.1",
